@@ -2,9 +2,8 @@ public class BinarySearchTreeRecursive implements BinarySearchTree {
     Node root;
 
     @Override
-    public Node insert(int x) {
-        root = insert(root, x);
-        return root;
+    public void insert(int x) {
+       insert(root, x);
     }
 
     private Node insert(Node root, int x) {
@@ -21,9 +20,8 @@ public class BinarySearchTreeRecursive implements BinarySearchTree {
     }
 
     @Override
-    public Node delete(int x) {
-        root = delete(root, x);
-        return root;
+    public void delete(int x) {
+        delete(root, x);
     }
 
     private Node delete(Node root, int x) {

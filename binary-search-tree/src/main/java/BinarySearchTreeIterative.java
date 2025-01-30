@@ -4,39 +4,38 @@ public class BinarySearchTreeIterative implements BinarySearchTree {
     Node root;
 
     @Override
-    public Node insert(int x) {
+    public void insert(int x) {
         Node newNode = new Node(x);
         if (root == null) {
             root = newNode;
-            return root;
+            return;
         }
         Node current = root;
-        Node parent = null;
+        Node parent;
         while (true) {
             parent = current;
             if (x < current.val) {
                 current = current.left;
                 if (current == null) {
                     parent.left = newNode;
-                    return root;
+                    return;
                 }
             } else {
                 current = current.right;
                 if (current == null) {
                     parent.right = newNode;
-                    return root;
+                    return;
                 }
             }
         }
     }
 
     @Override
-    public Node delete(int x) {
-        root = deleteNode(root, x);
-        return root;
+    public void delete(int x) {
+        deleteNode(root, x);
     }
 
-    private Node deleteNode(Node root, int value) {
+    private void deleteNode(Node root, int value) {
         Node parent = null;
         Node current = root;
 
@@ -52,7 +51,7 @@ public class BinarySearchTreeIterative implements BinarySearchTree {
 
         // If the node to be deleted is not found
         if (current == null) {
-            return root;
+            return;
         }
 
         // Case 1: Node to be deleted has at most one child
@@ -61,7 +60,7 @@ public class BinarySearchTreeIterative implements BinarySearchTree {
 
             // If the node to be deleted is the root node
             if (parent == null) {
-                return newCurrent;
+                return;
             }
 
             // Update the parent's reference
@@ -91,7 +90,6 @@ public class BinarySearchTreeIterative implements BinarySearchTree {
             current.val = successor.val;
         }
 
-        return root;
     }
 
     @Override
